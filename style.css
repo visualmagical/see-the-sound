@@ -1,0 +1,213 @@
+* {
+  margin: 0;
+}
+body {
+  margin: 0;
+  font-family: 'Dosis', Helvetica, Arial, sans-serif;
+  color: #fff;
+  font-size: 20px;
+  background-color: #222;
+  letter-spacing: 1px;
+}
+.wrap {
+  width: 100%;
+  height: 100vh;
+}
+
+
+.logo {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 20px;
+}
+
+.equalizer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.spectrum {
+  box-sizing: border-box;
+  transform: translateZ(0);
+  height: 100%;
+}
+
+.spectrum .bar {
+  background-color: transparent;
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  height: 50px;
+  width: 1px;
+  transform: translateZ(0);
+  will-change: transform;
+  transform-origin: 50% 100%;
+}
+
+.play {
+  z-index: 10;
+  border: rgba(255,255,255,.5);
+  background-color: transparent;
+  padding: 50px;
+  color: #fff;
+  outline: none;
+  transition: all .5s;
+  display: none;
+  cursor: pointer;
+  font-size: 20px;
+  font-family: 'Dosis', Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  background-color: #222;
+  letter-spacing: 1px;
+  margin-top: -.5em;
+}
+
+
+.play:hover {
+  color: #a3ff99;
+  animation: color 4s infinite;
+}
+
+
+.intro {
+  z-index: 100;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom:0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 60px);
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 100px;
+  opacity: 0;
+  animation: opa .5s 6s forwards;
+}
+
+.form .text {
+  color: #fff;
+  text-align: center;
+  line-height: 1.5;
+  transition: color .3s;
+}
+.form {
+  transition: all .3s;
+}
+.form:hover .text {
+  color: #a3ff99;
+  animation: color 4s .3s infinite;
+}
+
+.text--bottom {
+  margin-bottom: 1em;
+}
+
+label {
+  cursor: pointer;
+}
+
+.file {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+.form .file-open svg path,
+.form .file-open svg circle{
+  transition: all .5s;
+}
+.form:hover .file-open svg path, 
+.form:hover .file-open svg circle {
+  stroke: #a3ff99;
+  animation: strokeColor 4s .3s infinite;
+}
+
+
+.dis-block {
+  display: block;
+}
+
+.dis-none {
+  display: none;
+}
+
+
+
+.s {
+  stroke-dasharray: 60;
+  stroke-dashoffset: 60;
+
+  animation: dash .8s 2s linear forwards;
+}
+
+.ee {
+  stroke-dasharray: 170;
+  stroke-dashoffset: 170;
+  /*stroke: url(#linear);*/
+  animation: dash 1.2s 2.8s linear forwards;
+}
+
+.t {
+  stroke-dasharray: 80;
+  stroke-dashoffset: 80;
+  animation: dash .5s 4s linear forwards;
+}
+.he {
+  stroke-dasharray: 220;
+  stroke-dashoffset: 220;
+  animation: dash 2s 4.5s linear forwards;
+}
+
+.sound {
+  stroke-dasharray: 560;
+  stroke-dashoffset: 560;
+  /*stroke: url(#linear);*/
+  animation: dash 3.5s 6.5s linear forwards;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+
+@keyframes opa {
+  to {
+    opacity: 1;
+  }
+}
+
+
+@keyframes strokeColor {
+  0% {stroke: #86ff40} /*green*/
+  20% {stroke: #97fcf9} /*sky*/
+  40% {stroke: #ffff99} /*yellow*/
+  60% {stroke: #ffe241} 
+  80% {stroke: #f05868} /*orange*/
+  100% {stroke: #a3ff99} /*green*/
+}
+
+@keyframes color {
+  0% {color: #86ff40}
+  20% {color: #97fcf9}
+  40% {color: #ffff99}
+  60% {color: #ffe241}
+  80% {color: #f05868}
+  100% {color: #a3ff99}
+}

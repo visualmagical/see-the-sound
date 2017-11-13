@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>see the sound</title>
+  <link rel="stylesheet" href="style.css?v=1.0.0">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Dosis:200,300" rel="stylesheet">
+</head>
+<body>
+<div class="wrap">
+<div class="logo">
+    <svg  xmlns="http://www.w3.org/2000/svg" width="200" height="54" viewBox="0 0 277.29 74.364">
+      <defs>
+        <linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%"   stop-color="#0DFF00"/>
+          <stop offset="50%" stop-color="#ffff00"/>
+          <stop offset="100%" stop-color="#ff0000"/>
+        </linearGradient>
+      </defs>
+
+
+<path class="sound" fill="none" stroke="#86FF40" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M127.664,30.472
+    c2.994-3.257-2.916-5.99-6.625-3.748c-9.165,5.54,3.068,12.65,2.81,19.626c-0.236,6.368-10.388,4.898-10.218,0.871
+    c0.259-6.149,19.833-1.747,20.222-10.945c-2.77,1.889-3.593,12.08,0.895,13.421c3.082-4.407,4.831-10.122,4.464-15.483
+    c-0.242-3.5-0.715-7.607-4.355-3.375c-6.241,7.254,10.889,3.461,13.432-0.791c-2.328,2.006-4.634,13.242-0.428,15.398
+    c4.482,2.3,7.398-12.452,7.139-15.359c-1.909,2.59-3.527,12.33,1.386,13.292c5.044,0.987,6.75-10.626,6.765-13.87
+    c-1.916,4.318-2.023,10.462-1.729,15.416c3.54-4.822,5.918-12.068,8.582-17.667c0.459,3.31-2.479,16.021,2,16.038
+    c4.215,0.018,6.172-12.049,12.748-11.86c-4.957-1.041-10.002,9.63-7.592,13.4c5.305,8.302,19.849-28.655,20.658-31.695
+    c0.702-2.636,4.133-12.187-0.758-12.592c-4.203-0.349-8.766,15.869-9.355,18.534c-1.188,5.355-3.16,33.063,9.202,30.142"/>
+<path class="t" fill="none" stroke="#86FF40" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M64.671,7.793
+    c-0.388,8.22-1.896,16.521-2.642,24.74c-0.415,4.566-2.328,13.379,2.279,16.738c4.592,3.35,7.979-1.561,8.129-5.921"/>
+<path class="he" fill="none" stroke="#86FF40" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M53.582,35.621
+    c7.985-3.098,17.671-12.337,23.328-19.833c0.443,2.725,0.139,10.546-0.331,18.485c-0.469,7.938-1.104,15.993-1.324,19.184
+    c0.658-4.834,3.613-17.6,9.131-18.992c0.024,2.684-2.117,10.487,0.875,11.901c5.813,2.749,10.539-11.928,10.319-15.782
+    c-5.345,0.129-6.675,11.938-4.528,15.552c3.788,6.382,9.447-0.116,13.179-3.046"/>
+<path class="s" fill="none" stroke="#86FF40" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M10.252,30.41
+    c3.854-3.42-3.666-6.669-6.213-1.553c-3.083,6.189,4.361,13.567,3.629,19.705c-3.816,0.764-8.496-1.55-7.543-5.999"/>
+<path class="ee" fill="none" stroke="#86FF40" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M14.049,43.575
+    c1.838-1.768,12.2-10.837,10.175-15.198c-1.486-3.2-4.489-0.463-6.261,1.732c-2.821,3.494-3.711,11.438-2.093,15.548
+    c5.416,13.754,25.048-12.887,22.047-17.624c-3.749-5.916-8.143,9.23-7.591,12.066c1.479,7.616,18.45,10.08,19.672,2.97"/>
+</svg>
+</div>
+
+<div class="intro">
+    
+
+    <div class="form">
+        <input accept=".mp3" type="file" id="file" name="file" class="file">
+        <label for="file" class="text">upload an mp3</label>
+        <label for="file" class="text text--bottom">and let the magic begin</label>
+        <label class="file-open" for="file">
+            <svg xmlns="http://www.w3.org/2000/svg" width="63" height="63" viewBox="224.031 220.877 63 63" enable-background="new 224.031 220.877 63 63"><path stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" fill="none" d="M255.557 238.266v28.629M241.25 252.573h28.505"/><circle stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" cx="255.531" cy="252.377" r="30" fill="none"/></svg>
+        </label>
+    </div>
+
+
+    <button class="play">
+        play
+    </button>
+</div>
+
+<div class="equalizer">
+  <div id="spectrum" class="spectrum">
+    
+  </div>
+</div>
+
+</div>
+
+<!-- <audio id="audioElement" src="../kooks.mp3"></audio> -->
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+
+<script src="script.js"></script>
+</body>
+</html>
