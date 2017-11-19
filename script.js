@@ -12,7 +12,9 @@ var audioCtx     = new AudioContext(),
     bars         = [],
     fileBtn      = document.querySelector('.file-open'),
     fileInput    = document.getElementById('file'),
-    form         = document.querySelector('.form');
+    mp3form         = document.querySelector('.mp3'),
+    listButtons  = [],
+    listItems    = document.querySelectorAll('.item');
 
 
 analyser.fftSize = 2048;
@@ -21,9 +23,6 @@ analyser.maxDecibels = 0;
 
 var bufferLength = analyser.frequencyBinCount,
     frequencyData = new Uint8Array(bufferLength);
-
-
-
 
 
 
@@ -106,15 +105,13 @@ function playSound() {
     setTimeout(function(){
       audioElement.play();
     },300)
-
-
   }
 }
 
 
 function onEnded() {
   document.body.removeChild(this);
-  form.classList.remove('dis-none');
+  mp3form.classList.remove('dis-none');
   playBtn.classList.remove('dis-block');
   playBtn.style.opacity = "1";
 }
@@ -124,25 +121,53 @@ function onEnded() {
 fileInput.addEventListener('change', function(e) {
   e.stopPropagation();
   var file = this.files[0];
-  console.log(file);
 
   audioElement = document.createElement('audio');
   audioElement.src = URL.createObjectURL(file);
   audioElement.id = 'audioElement';
-  console.log(URL.createObjectURL(file));
   document.body.appendChild(audioElement);
   audioSrc     = audioCtx.createMediaElementSource(audioElement);
   audioSrc.connect(audioCtx.destination);
   audioSrc.connect(analyser);
   playBtn.classList.add('dis-block');
-  form.classList.add('dis-none');
+  mp3form.classList.add('dis-none');
   audioElement.addEventListener('ended', onEnded);
 })
 
-// fileBtn.addEventListener("click", );
-
 
 playBtn.addEventListener("click", playSound);
-// spectrum.addEventListener("click", playSound);
 MusicVisuals.render();
 MusicVisuals.start();
+
+
+
+for (let j = 0; j < listItems.length; j++) {
+
+
+  listButtons.push(listItems[j]); 
+  console.log(listButtons);
+
+  // listButtons.map(function(i){
+  //   i.classList.contains('active')
+  // })
+
+  listButtons[j].addEventListener("click", function() {
+    listButtons.forEach(
+      
+      function(){
+        this.classList.add('dis-none');
+      });
+    this.classList.remove('dis-none');
+
+    let dataType = this.getAttribute("data-type");
+    if (dataType === "sound") {
+      mp3form.classList.add('dis-block');
+      setTimeout(function(){
+        mp3form.style('opacity', '1');
+      }, 500)
+    }
+  })
+}
+// function choose() {
+
+// }
