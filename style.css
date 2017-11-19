@@ -8,18 +8,30 @@ body {
   font-size: 20px;
   background-color: #222;
   letter-spacing: 1px;
+  min-width: 320px;
 }
 .wrap {
   width: 100%;
   height: 100vh;
+  position: relative;
 }
 
 
 .logo {
   position: absolute;
-  left: 0;
-  top: 0;
+  left: 50%;
+  top: 40%;
+  margin-left: -110px;
+  margin-top: -30px;
   padding: 20px;
+  transition: all .5s;
+  animation: trans 1.2s 5s forwards;
+}
+
+@media (max-width: 678px) {
+  .logo {
+    animation: transMob 1.2s 5s forwards;
+  }
 }
 
 .equalizer {
@@ -64,9 +76,9 @@ body {
   font-size: 20px;
   font-family: 'Dosis', Helvetica, Arial, sans-serif;
   font-size: 20px;
-  background-color: #222;
   letter-spacing: 1px;
   margin-top: -.5em;
+  border-radius: 50%;
 }
 
 
@@ -94,7 +106,7 @@ body {
   align-items: center;
   padding-bottom: 100px;
   opacity: 0;
-  animation: opa .5s 6s forwards;
+  animation: opa .8s 5.7s forwards;
 }
 
 .form .text {
@@ -151,33 +163,32 @@ label {
 .s {
   stroke-dasharray: 60;
   stroke-dashoffset: 60;
-
-  animation: dash .8s 2s linear forwards;
+  animation: dash .3s 1.5s linear forwards;
 }
 
 .ee {
   stroke-dasharray: 170;
   stroke-dashoffset: 170;
   /*stroke: url(#linear);*/
-  animation: dash 1.2s 2.8s linear forwards;
+  animation: dash .7s 1.8s linear forwards;
 }
 
 .t {
   stroke-dasharray: 80;
   stroke-dashoffset: 80;
-  animation: dash .5s 4s linear forwards;
+  animation: dash .3s 2.5s linear forwards;
 }
 .he {
   stroke-dasharray: 220;
   stroke-dashoffset: 220;
-  animation: dash 2s 4.5s linear forwards;
+  animation: dash .7s 2.8s linear forwards;
 }
 
 .sound {
   stroke-dasharray: 560;
   stroke-dashoffset: 560;
   /*stroke: url(#linear);*/
-  animation: dash 3.5s 6.5s linear forwards;
+  animation: dash 2s 3.5s linear forwards;
 }
 
 @keyframes dash {
@@ -192,6 +203,24 @@ label {
     opacity: 1;
   }
 }
+
+
+@keyframes trans {
+  to {
+    margin-left: 0;
+    margin-top: 0;
+    top: 0;
+    left: 0;
+  }
+}
+
+@keyframes transMob {
+  to {
+    margin-top: 0;
+    top: 0;
+  }
+}
+
 
 
 @keyframes strokeColor {
