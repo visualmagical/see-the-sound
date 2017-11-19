@@ -13,8 +13,8 @@ var audioCtx     = new AudioContext(),
     fileBtn      = document.querySelector('.file-open'),
     fileInput    = document.getElementById('file'),
     mp3form         = document.querySelector('.mp3'),
-    listButtons  = [],
-    listItems    = document.querySelectorAll('.item');
+    listItems    = document.querySelectorAll('.item'),
+    hello        = document.querySelector('.hello');
 
 
 analyser.fftSize = 2048;
@@ -134,40 +134,35 @@ fileInput.addEventListener('change', function(e) {
   audioElement.addEventListener('ended', onEnded);
 })
 
-
 playBtn.addEventListener("click", playSound);
 MusicVisuals.render();
 MusicVisuals.start();
 
 
-
 for (let j = 0; j < listItems.length; j++) {
 
+  listItems[j].addEventListener("click", function() {
+     
+    this.classList.add('button--active');
+    removeOther();
+    this.classList.remove('button--active');
+    hello.classList.add('move');
+    
+    let dataType = this.getAttribute('data-type');
+    console.log(dataType);
 
-  listButtons.push(listItems[j]); 
-  console.log(listButtons);
-
-  // listButtons.map(function(i){
-  //   i.classList.contains('active')
-  // })
-
-  listButtons[j].addEventListener("click", function() {
-    listButtons.forEach(
-      
-      function(){
-        this.classList.add('dis-none');
-      });
-    this.classList.remove('dis-none');
-
-    let dataType = this.getAttribute("data-type");
     if (dataType === "sound") {
-      mp3form.classList.add('dis-block');
-      setTimeout(function(){
-        mp3form.style('opacity', '1');
-      }, 500)
-    }
+      mp3form.classList.add('dis-flex');
+    } 
+
   })
 }
-// function choose() {
 
-// }
+
+function removeOther () {
+  for (let k = 0; k < listItems.length; k++ ) {
+    if (!listItems[k].classList.contains('button--active')) {
+        listItems[k].classList.add('collapse');
+    } 
+  }
+}
