@@ -152,7 +152,7 @@ button {
   justify-content: center;
   height: calc(100vh - 60px);
 }
-.mp3 {
+.upload {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -163,14 +163,14 @@ button {
   display: none;
 }
 
-.mp3 .text {
+.upload .text {
   color: #fff;
   text-align: center;
   line-height: 1.5;
   transition: color .3s;
 }
 
-.mp3:hover .text {
+.upload:hover .text {
   color: #a3ff99;
   animation: color 4s .3s infinite;
 }
@@ -191,16 +191,32 @@ label {
   position: absolute;
   z-index: -1;
 }
-.mp3 .file-open svg path,
-.mp3 .file-open svg circle{
+.upload .file-open svg path,
+.upload .file-open svg circle{
   transition: all .5s;
 }
-.mp3:hover .file-open svg path, 
-.mp3:hover .file-open svg circle {
+.upload:hover .file-open svg path, 
+.upload:hover .file-open svg circle {
   stroke: #a3ff99;
   animation: strokeColor 4s .3s infinite;
 }
 
+.mp3 {
+  display: none;
+}
+
+.rec {
+  font-family: 'Dosis', Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  letter-spacing: 1px;
+  margin-top: -.5em;
+  border-radius: 50%;
+  display: none;
+}
+
+.record {
+  display: none;
+}
 
 .dis-block {
   display: block;

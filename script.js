@@ -12,10 +12,12 @@ var audioCtx     = new AudioContext(),
     bars         = [],
     fileBtn      = document.querySelector('.file-open'),
     fileInput    = document.getElementById('file'),
-    mp3form         = document.querySelector('.mp3'),
+    upload       = document.querySelector('.upload'),
+    mp3          = document.querySelector('.mp3'),
     listItems    = document.querySelectorAll('.item'),
-    hello        = document.querySelector('.hello');
-
+    hello        = document.querySelector('.hello'),
+    recButton    = document.querySelector('.rec'),
+    record       = document.querySelector('.record');
 
 analyser.fftSize = 2048;
 analyser.minDecibels = -90;
@@ -23,10 +25,6 @@ analyser.maxDecibels = 0;
 
 var bufferLength = analyser.frequencyBinCount,
     frequencyData = new Uint8Array(bufferLength);
-
-
-
-
 
 
 var MusicVisuals = {
@@ -63,6 +61,7 @@ var MusicVisuals = {
     
     for (let i = 0; i < numberOfBars; i += 1) {
       let y = frequencyData[i];
+      console.log(frequencyData);
       y = (y - min ) / k * 7;
       
       if (barcount > numberOfBars) {
@@ -111,7 +110,7 @@ function playSound() {
 
 function onEnded() {
   document.body.removeChild(this);
-  mp3form.classList.remove('dis-none');
+  upload.classList.add('dis-flex');
   playBtn.classList.remove('dis-block');
   playBtn.style.opacity = "1";
 }
@@ -129,14 +128,21 @@ fileInput.addEventListener('change', function(e) {
   audioSrc     = audioCtx.createMediaElementSource(audioElement);
   audioSrc.connect(audioCtx.destination);
   audioSrc.connect(analyser);
+
   playBtn.classList.add('dis-block');
-  mp3form.classList.add('dis-none');
+  upload.classList.remove('dis-flex');
   audioElement.addEventListener('ended', onEnded);
 })
 
 playBtn.addEventListener("click", playSound);
-MusicVisuals.render();
-MusicVisuals.start();
+recButton.addEventListener("click", function(){
+  startRec();
+  MusicVisuals.render();
+  MusicVisuals.start();
+
+});
+// MusicVisuals.render();
+// MusicVisuals.start();
 
 
 for (let j = 0; j < listItems.length; j++) {
@@ -152,9 +158,16 @@ for (let j = 0; j < listItems.length; j++) {
     console.log(dataType);
 
     if (dataType === "sound") {
-      mp3form.classList.add('dis-flex');
-    } 
-
+      record.classList.remove('dis-block');
+      recButton.classList.remove('dis-block');
+      mp3.classList.add('dis-block');
+      upload.classList.add('dis-flex');
+    } else if ( dataType === "voice" ) {
+      mp3.classList.remove('dis-block');
+      upload.classList.remove('dis-flex');
+      record.classList.add('dis-block');
+      recButton.classList.add('dis-block');
+    }
   })
 }
 
@@ -165,4 +178,37 @@ function removeOther () {
         listItems[k].classList.add('collapse');
     } 
   }
+}
+
+
+
+
+
+
+
+
+
+
+
+ 
+function startRec() {
+
+    navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
+    navigator.getUserMedia(
+        { audio: true, video: false }, 
+        function (mediaStream) {
+            audioSrc = audioCtx.createMediaStreamSource(mediaStream);
+            audioSrc.connect(audioCtx.destination);
+            audioSrc.connect(analyser);
+
+        }, 
+        function (error) {
+            console.log("There was an error when getting microphone input: " + err);
+        }
+    );
+}
+ 
+function stopRec() {
+    audioSrc.disconnect(); 
+    audioSrc = null; 
 }
