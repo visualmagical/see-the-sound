@@ -22,6 +22,8 @@ var audioCtx     = new AudioContext(),
 analyser.fftSize = 2048;
 analyser.minDecibels = -90;
 analyser.maxDecibels = 0; 
+// analyser.smoothingTimeConstant = 1;
+
 
 var bufferLength = analyser.frequencyBinCount,
     frequencyData = new Uint8Array(bufferLength);
@@ -61,7 +63,7 @@ var MusicVisuals = {
     
     for (let i = 0; i < numberOfBars; i += 1) {
       let y = frequencyData[i];
-      console.log(frequencyData);
+      // console.log(frequencyData);
       y = (y - min ) / k * 7;
       
       if (barcount > numberOfBars) {
@@ -182,14 +184,6 @@ function removeOther () {
 
 
 
-
-
-
-
-
-
-
-
  
 function startRec() {
 
@@ -198,9 +192,9 @@ function startRec() {
         { audio: true, video: false }, 
         function (mediaStream) {
             audioSrc = audioCtx.createMediaStreamSource(mediaStream);
-            audioSrc.connect(audioCtx.destination);
             audioSrc.connect(analyser);
-
+            // analyser.connect(audioCtx.destination);
+            console.log(audioElement);
         }, 
         function (error) {
             console.log("There was an error when getting microphone input: " + err);

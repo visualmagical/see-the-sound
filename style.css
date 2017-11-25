@@ -42,7 +42,6 @@ button {
   margin-top: -30px;
   padding: 20px;
   transition: all .5s;
-  
   display: flex;
   z-index: 101;
 }
@@ -115,7 +114,7 @@ button {
   transform-origin: 50% 100%;
 }
 
-.play {
+.play, .rec {
   z-index: 10;
   border: rgba(255,255,255,.5);
   background-color: transparent;
@@ -134,11 +133,11 @@ button {
 }
 
 
-.play:hover {
+.play:hover, 
+.rec:hover {
   color: #a3ff99;
   animation: color 4s infinite;
 }
-
 
 .intro {
   z-index: 100;
@@ -205,17 +204,17 @@ label {
   display: none;
 }
 
-.rec {
-  font-family: 'Dosis', Helvetica, Arial, sans-serif;
-  font-size: 20px;
-  letter-spacing: 1px;
-  margin-top: -.5em;
-  border-radius: 50%;
-  display: none;
-}
+// .rec {
+//   font-family: 'Dosis', Helvetica, Arial, sans-serif;
+//   font-size: 20px;
+//   letter-spacing: 1px;
+//   margin-top: -.5em;
+//   border-radius: 50%;
+//   // display: none;
+// }
 
 .record {
-  display: none;
+  // display: none;
 }
 
 .dis-block {
