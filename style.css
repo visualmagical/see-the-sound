@@ -48,6 +48,7 @@ button {
 
 .hello.move {
   animation: trans 1.2s 1s  forwards;
+  cursor: pointer;
 }
 
 @media (max-width: 678px) {
@@ -131,7 +132,7 @@ button {
   font-family: 'Dosis', Helvetica, Arial, sans-serif;
   font-size: 20px;
   letter-spacing: 1px;
-  margin-top: -.5em;
+  margin-top: 50px;
   border-radius: 50%;
 }
 
@@ -152,7 +153,7 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: calc(100vh - 60px);
+  height: 100vh;
 }
 .upload {
   display: flex;
@@ -217,7 +218,30 @@ label {
 // }
 
 .record {
-  // display: none;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  text-align: center;
+  opacity: 0;
+  transition: all 1s;
+}
+
+.record.ap-disap {
+  animation: opaopa 7s forwards;
+}
+
+@media (max-width: 678px) {
+  .record {
+    top: 100px;
+  }
+
+  .record.ap-disap {
+    animation: opaopa 5s 1s forwards;
+  }
+
+
 }
 
 .dis-block {
@@ -230,6 +254,24 @@ label {
 
 .dis-none {
   display: none;
+}
+
+.disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.appear {
+  animation: opa 1s 1.5s forwards;
+}
+
+
+.disappear {
+  animation: disappear 1s forwards;
 }
 
 svg path {
@@ -304,6 +346,18 @@ svg path {
   }
 }
 
+@keyframes opaopa {
+  0% { opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes disappear {
+  to {
+    opacity: 0;
+  }
+}
 
 @keyframes trans {
   to {
