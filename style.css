@@ -54,6 +54,11 @@ button {
   .hello.move {
     animation: transMob 1.2s 1s forwards;
   }
+
+  .hello {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 .item {
@@ -76,8 +81,6 @@ button {
 }
 
 .voice {
-  opacity: 0;
-  animation: opa .5s  5.5s forwards;
   font-size: 48px;
 }
 
@@ -229,24 +232,28 @@ label {
   display: none;
 }
 
-.s {
+svg path {
+  transition: all .1s;
+}
+
+.see-the__s {
   stroke-dasharray: 60;
   stroke-dashoffset: 60;
   animation: dash .3s 1.5s linear forwards;
 }
 
-.ee {
+.see-the__ee {
   stroke-dasharray: 170;
   stroke-dashoffset: 170;
   animation: dash .7s 1.8s linear forwards;
 }
 
-.t {
+.see-the__t {
   stroke-dasharray: 80;
   stroke-dashoffset: 80;
   animation: dash .3s 2.5s linear forwards;
 }
-.he {
+.see-the__he {
   stroke-dasharray: 220;
   stroke-dashoffset: 220;
   animation: dash .7s 2.8s linear forwards;
@@ -257,6 +264,32 @@ label {
   stroke-dashoffset: 560;
   animation: dash 2s 3.5s linear forwards;
 }
+
+.voice__v {
+  stroke-dasharray: 51;
+  stroke-dashoffset: 51;
+  animation: dash .2s 5.5s linear forwards;
+}
+
+.voice__o {
+  stroke-dasharray: 64;
+  stroke-dashoffset: 64;
+  animation: dash .2s 5.7s linear forwards;
+}
+
+.voice__i {
+  stroke-dasharray: 63;
+  stroke-dashoffset: 63;
+  animation: dash .1s 5.9s linear forwards;
+}
+
+.voice__ce {
+  stroke-dasharray: 82;
+  stroke-dashoffset: 82;
+  animation: dash .3s 5.9s linear forwards;
+}
+
+
 
 @keyframes dash {
   to {
