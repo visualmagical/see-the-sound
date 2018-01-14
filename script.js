@@ -30,6 +30,7 @@ var numberOfBars = 180,
     record       = document.querySelector('.record');
 
 
+// a = [].slice().call(a);
 
 ///////////////////////////  visuals  ///////////////////////////
 
@@ -67,7 +68,6 @@ var MusicVisuals = {
     
     for (let i = 0; i < numberOfBars; i += 1) {
       let y = frequencyData[i];
-      // console.log(frequencyData);
       y = (y - min ) / k * 7;
       
       if (barcount > numberOfBars) {
@@ -86,7 +86,6 @@ var MusicVisuals = {
         if (max === 0) {
           bar.style.transform = "rotate(" + deg + "deg) " + "scaleY(" + 0 + ")";
         }
-
       }
       barcount++;
     }
@@ -131,31 +130,30 @@ hello.addEventListener('click', function(e) {
   e.stopPropagation();
   if ( this.classList.contains('move') ) {
     
-    console.log('move detected');
     for (let j = 0; j < listItems.length; j++) {
       listItems[j].classList.remove('disabled');
       listItems[j].classList.remove('collapse');
+      listItems[j].classList.remove('voice-trans');
     }
     
     this.classList.remove('move');
     record.classList.remove('ap-disap');
     mp3.classList.remove('dis-block');
     upload.classList.remove('dis-flex');
-    audioSrc.disconnect(); 
-    audioSrc = null;
+    playBtn.classList.remove('dis-block');
+    playBtn.style.opacity = "1";
+
+
+    if (audioSrc !== null) {
+      audioSrc.disconnect(); 
+      audioSrc = null;
+    }
   }
 })
 
 
 
-
 /////////////////////////// functions  ///////////////////////////
-
-function loadMp3() {
-  
-}
-
-
 
 function playSound() {
   if (!audioElement.paused) {
@@ -171,7 +169,6 @@ function playSound() {
       audioElement.play();
     },300)
   }
-  console.log("audiosrc: " + audioSrc);
 }
 
 function onEnded() {
@@ -187,12 +184,16 @@ function onEnded() {
 function handleList() {
   for (let j = 0; j < listItems.length; j++) {
 
+    setTimeout( function(){
+      listItems[j].classList.remove('disabled');
+    }, 6000)
+
     listItems[j].addEventListener("click", function(e) {
-      console.log('click!');
       e.stopPropagation();
        
       listItems[j].classList.add('button--active');
       listItems[j].classList.add('disabled');
+      listItems[j].classList.add('voice-trans');
 
       removeOtherItems();
       listItems[j].classList.remove('button--active');
@@ -218,8 +219,6 @@ function handleList() {
   }
 }
 
-
-
 function removeOtherItems () {
   for (let k = 0; k < listItems.length; k++ ) {
     if (!listItems[k].classList.contains('button--active')) {
@@ -237,8 +236,9 @@ function startRec() {
             audioSrc = audioCtx.createMediaStreamSource(mediaStream);
             audioSrc.connect(analyser);
             record.classList.add('ap-disap'); 
+            console.log('ololo');
         }, 
-        function (error) {
+        function (err) {
           console.log("There was an error when getting microphone input: " + err);
         }
     );
@@ -247,6 +247,3 @@ function startRec() {
     audioSrc = null; 
   }
 }
-
-
-

@@ -37,48 +37,44 @@ button {
   position: absolute;
   left: 50%;
   top: 40%;
-  width: 320px;
-  margin-left: -160px;
+  width: 270px;
+  margin-left: -155px;
   margin-top: -30px;
   padding: 20px;
-  transition: all .5s;
+  transition: all 1.2s .5s;
   display: flex;
   z-index: 101;
 }
 
+
 .hello.move {
-  animation: trans 1.2s 1s  forwards;
+  margin-left: 0;
+  margin-top: 0;
+  top: 0;
+  left: 0;
   cursor: pointer;
 }
 
-@media (max-width: 678px) {
-  .hello.move {
-    animation: transMob 1.2s 1s forwards;
-  }
 
-  .hello {
-    display: flex;
-    justify-content: center;
-  }
-}
 
 .item {
-  transition: all .5s;
+  transition: all 1s;
   display: block;
   cursor: pointer;
+  max-height: 100px;
+  position: relative;
 }
 
 .item svg path {
   transition: all .5s;
 }
-.item:hover svg path {
-  stroke: #f05868;
-  // animation: strokeColor 3s infinite;
-}
+
 .item.collapse {
   overflow: hidden;
-  max-height: 100px;
-  animation: collapse 1s forwards;
+  max-height: 0px;
+  opacity: 0;
+  transform: scale(0);
+
 }
 
 .voice {
@@ -88,6 +84,7 @@ button {
 .list {
   margin: 0;
   padding-left: 8px;
+  display: flex;
 }
 .equalizer {
   position: absolute;
@@ -98,6 +95,22 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.slash {
+  margin-top: 20px;
+  pointer-events: none !important;
+  cursor: default !important;
+}
+
+
+.voice {
+  margin-top: 10px;
+}
+
+.voice.voice-trans {
+  transform: translateX(-100px);
+  margin-top: 0;
 }
 
 .spectrum {
@@ -173,6 +186,7 @@ button {
   transition: color .3s;
 }
 
+
 .upload:hover .text {
   color: #a3ff99;
   animation: color 4s .3s infinite;
@@ -208,18 +222,10 @@ label {
   display: none;
 }
 
-// .rec {
-//   font-family: 'Dosis', Helvetica, Arial, sans-serif;
-//   font-size: 20px;
-//   letter-spacing: 1px;
-//   margin-top: -.5em;
-//   border-radius: 50%;
-//   // display: none;
-// }
 
 .record {
   position: absolute;
-  top: 40px;
+  top: 45px;
   left: 0;
   right: 0;
   width: 100%;
@@ -240,9 +246,14 @@ label {
   .record.ap-disap {
     animation: opaopa 5s 1s forwards;
   }
-
-
 }
+
+@media (max-width: 414px) {
+  .record.ap-disap{
+    font-size: 14px;
+  }
+}
+
 
 .dis-block {
   display: block;
@@ -284,7 +295,7 @@ svg path {
   animation: dash .3s 1.5s linear forwards;
 }
 
-.see-the__ee {
+ .see-the__ee {
   stroke-dasharray: 170;
   stroke-dashoffset: 170;
   animation: dash .7s 1.8s linear forwards;
@@ -301,37 +312,81 @@ svg path {
   animation: dash .7s 2.8s linear forwards;
 }
 
-.sound {
+ .sound {
   stroke-dasharray: 560;
   stroke-dashoffset: 560;
   animation: dash 2s 3.5s linear forwards;
 }
 
+.slash path {
+  stroke-dasharray: 41;
+  stroke-dashoffset: 41;
+  animation: dash .2s 5.5s linear forwards;
+}
+
+
 .voice__v {
   stroke-dasharray: 51;
   stroke-dashoffset: 51;
-  animation: dash .2s 5.5s linear forwards;
+  animation: dash .2s 5.7s linear forwards;
 }
 
 .voice__o {
   stroke-dasharray: 64;
   stroke-dashoffset: 64;
-  animation: dash .2s 5.7s linear forwards;
+  animation: dash .2s 5.9s linear forwards;
 }
 
 .voice__i {
   stroke-dasharray: 63;
   stroke-dashoffset: 63;
-  animation: dash .1s 5.9s linear forwards;
+  animation: dash .1s 6.1s linear forwards;
 }
 
-.voice__ce {
+ .voice__ce {
   stroke-dasharray: 82;
   stroke-dashoffset: 82;
-  animation: dash .3s 5.9s linear forwards;
+  animation: dash .3s 6.1s linear forwards;
 }
 
+.item:hover svg path {
+  // stroke: #f05868;
+}
 
+.voice_under {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.voice_under path{
+  stroke-dashoffset: 66;
+  stroke-dasharray: 66;
+  transition: all .3s;
+}
+
+.sound_under {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+}
+
+@media (max-width: 414px) {
+  .sound_under {
+    bottom: 0;
+  }
+}
+
+.sound_under path{
+  stroke-dashoffset: 71;
+  stroke-dasharray: 71;
+  transition: all .3s;
+}
+
+.voice:hover .voice_under path,
+.item--sound:hover .sound_under path {
+   stroke-dashoffset: 0;
+}
 
 @keyframes dash {
   to {
@@ -413,6 +468,6 @@ svg path {
   to {
       max-height: 0px;
       opacity: 0;
-       transform: scale(0);
+      transform: scale(0);
     }
 }
