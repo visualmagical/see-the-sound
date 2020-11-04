@@ -10,85 +10,32 @@ body {
   letter-spacing: 1px;
   min-width: 320px;
 }
-
-li {
-  list-style: none;
-}
-
-button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  font-size: 50px;
-  color: #fff;
-}
-
 .wrap {
   width: 100%;
   height: 100vh;
   position: relative;
 }
 
-.see-the {
-  padding-top: 10px;
-}
 
-.hello {
+.logo {
   position: absolute;
+  cursor: pointer;
+  z-index: 1000;
   left: 50%;
   top: 40%;
-  width: 320px;
-  margin-left: -160px;
+  margin-left: -110px;
   margin-top: -30px;
   padding: 20px;
   transition: all .5s;
-  display: flex;
-  z-index: 101;
-}
-
-.hello.move {
-  animation: trans 1.2s 1s  forwards;
-  cursor: pointer;
+  /*animation: trans 1.2s 5s forwards;*/
 }
 
 @media (max-width: 678px) {
-  .hello.move {
-    animation: transMob 1.2s 1s forwards;
-  }
-
-  .hello {
-    display: flex;
-    justify-content: center;
+  .logo {
+    /*animation: transMob 1.2s 5s forwards;*/
   }
 }
 
-.item {
-  transition: all .5s;
-  display: block;
-  cursor: pointer;
-}
-
-.item svg path {
-  transition: all .5s;
-}
-.item:hover svg path {
-  stroke: #f05868;
-  // animation: strokeColor 3s infinite;
-}
-.item.collapse {
-  overflow: hidden;
-  max-height: 100px;
-  animation: collapse 1s forwards;
-}
-
-.voice {
-  font-size: 48px;
-}
-
-.list {
-  margin: 0;
-  padding-left: 8px;
-}
 .equalizer {
   position: absolute;
   left: 0;
@@ -118,7 +65,7 @@ button {
   transform-origin: 50% 100%;
 }
 
-.play, .rec {
+.play {
   z-index: 10;
   border: rgba(255,255,255,.5);
   background-color: transparent;
@@ -132,16 +79,16 @@ button {
   font-family: 'Dosis', Helvetica, Arial, sans-serif;
   font-size: 20px;
   letter-spacing: 1px;
-  margin-top: 50px;
+  margin-top: -.5em;
   border-radius: 50%;
 }
 
 
-.play:hover, 
-.rec:hover {
+.play:hover {
   color: #a3ff99;
   animation: color 4s infinite;
 }
+
 
 .intro {
   z-index: 100;
@@ -153,27 +100,27 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: calc(100vh - 60px);
 }
-.upload {
+.form {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-bottom: 100px;
   opacity: 0;
-  animation: opa .8s 2s forwards;
-  transition: all .3s;
-  display: none;
+  animation: opa .8s 5.7s forwards;
 }
 
-.upload .text {
+.form .text {
   color: #fff;
   text-align: center;
   line-height: 1.5;
   transition: color .3s;
 }
-
-.upload:hover .text {
+.form {
+  transition: all .3s;
+}
+.form:hover .text {
   color: #a3ff99;
   animation: color 4s .3s infinite;
 }
@@ -194,38 +141,87 @@ label {
   position: absolute;
   z-index: -1;
 }
-.upload .file-open svg path,
-.upload .file-open svg circle{
+.form .file-open svg path,
+.form .file-open svg circle{
   transition: all .5s;
 }
-.upload:hover .file-open svg path, 
-.upload:hover .file-open svg circle {
+.form:hover .file-open svg path, 
+.form:hover .file-open svg circle {
   stroke: #a3ff99;
   animation: strokeColor 4s .3s infinite;
 }
 
-.mp3 {
+
+.dis-block {
+  display: block;
+}
+
+.dis-none {
   display: none;
 }
 
-// .rec {
-//   font-family: 'Dosis', Helvetica, Arial, sans-serif;
-//   font-size: 20px;
-//   letter-spacing: 1px;
-//   margin-top: -.5em;
-//   border-radius: 50%;
-//   // display: none;
-// }
+
+
+.s {
+  stroke-dasharray: 60;
+  stroke-dashoffset: 60;
+  animation: dash .3s 1.5s linear forwards;
+}
+
+.ee {
+  stroke-dasharray: 170;
+  stroke-dashoffset: 170;
+  /*stroke: url(#linear);*/
+  animation: dash .7s 1.8s linear forwards;
+}
+
+.t {
+  stroke-dasharray: 80;
+  stroke-dashoffset: 80;
+  animation: dash .3s 2.5s linear forwards;
+}
+.he {
+  stroke-dasharray: 220;
+  stroke-dashoffset: 220;
+  animation: dash .7s 2.8s linear forwards;
+}
+
+.sound {
+  stroke-dasharray: 560;
+  stroke-dashoffset: 560;
+  animation: dash 2s 3.5s linear forwards;
+}
+
+.logo.invisible {
+  opacity: 0;
+  pointer-events: none;
+}
+
 
 .record {
   position: absolute;
-  top: 40px;
+  top: 45px;
   left: 0;
   right: 0;
   width: 100%;
   text-align: center;
   opacity: 0;
   transition: all 1s;
+}
+
+.warning {
+  position: absolute;
+  top: 45px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  text-align: center;
+  opacity: 0;
+  transition: all 1s;
+}
+
+.warning.visible {
+  opacity: 1;
 }
 
 .record.ap-disap {
@@ -240,95 +236,12 @@ label {
   .record.ap-disap {
     animation: opaopa 5s 1s forwards;
   }
-
-
 }
 
-.dis-block {
-  display: block;
-}
-
-.dis-flex {
-  display: flex;
-}
-
-.dis-none {
-  display: none;
-}
-
-.disabled {
-  pointer-events: none;
-  cursor: default;
-}
-
-.clickable {
-  cursor: pointer;
-}
-
-.appear {
-  animation: opa 1s 1.5s forwards;
-}
-
-
-.disappear {
-  animation: disappear 1s forwards;
-}
-
-svg path {
-  transition: all .1s;
-}
-
-.see-the__s {
-  stroke-dasharray: 60;
-  stroke-dashoffset: 60;
-  animation: dash .3s 1.5s linear forwards;
-}
-
-.see-the__ee {
-  stroke-dasharray: 170;
-  stroke-dashoffset: 170;
-  animation: dash .7s 1.8s linear forwards;
-}
-
-.see-the__t {
-  stroke-dasharray: 80;
-  stroke-dashoffset: 80;
-  animation: dash .3s 2.5s linear forwards;
-}
-.see-the__he {
-  stroke-dasharray: 220;
-  stroke-dashoffset: 220;
-  animation: dash .7s 2.8s linear forwards;
-}
-
-.sound {
-  stroke-dasharray: 560;
-  stroke-dashoffset: 560;
-  animation: dash 2s 3.5s linear forwards;
-}
-
-.voice__v {
-  stroke-dasharray: 51;
-  stroke-dashoffset: 51;
-  animation: dash .2s 5.5s linear forwards;
-}
-
-.voice__o {
-  stroke-dasharray: 64;
-  stroke-dashoffset: 64;
-  animation: dash .2s 5.7s linear forwards;
-}
-
-.voice__i {
-  stroke-dasharray: 63;
-  stroke-dashoffset: 63;
-  animation: dash .1s 5.9s linear forwards;
-}
-
-.voice__ce {
-  stroke-dasharray: 82;
-  stroke-dashoffset: 82;
-  animation: dash .3s 5.9s linear forwards;
+@media (max-width: 414px) {
+  .record.ap-disap{
+    font-size: 14px;
+  }
 }
 
 
@@ -346,34 +259,6 @@ svg path {
   }
 }
 
-@keyframes opaopa {
-  0% { opacity: 0; }
-  20% { opacity: 1; }
-  80% { opacity: 1; }
-  100% { opacity: 0; }
-}
-
-@keyframes disappear {
-  to {
-    opacity: 0;
-  }
-}
-
-@keyframes trans {
-  to {
-    margin-left: 0;
-    margin-top: 0;
-    top: 0;
-    left: 0;
-  }
-}
-
-@keyframes transMob {
-  to {
-    margin-top: 0;
-    top: 0;
-  }
-}
 
 
 
@@ -386,15 +271,6 @@ svg path {
   100% {stroke: #a3ff99} /*green*/
 }
 
-@keyframes strokeColorrr {
-  0% {stroke: #86ff40; stroke-dashoffset: 0;} /*green*/
-  20% {stroke: #97fcf9; stroke-dashoffset: 0;} /*sky*/
-  40% {stroke: #ffff99; stroke-dashoffset: 0;} /*yellow*/
-  60% {stroke: #ffe241; stroke-dashoffset: 0;} 
-  80% {stroke: #f05868; stroke-dashoffset: 0;} /*orange*/
-  100% {stroke: #a3ff99; stroke-dashoffset: 0;} /*green*/
-}
-
 @keyframes color {
   0% {color: #86ff40}
   20% {color: #97fcf9}
@@ -404,15 +280,9 @@ svg path {
   100% {color: #a3ff99}
 }
 
-@keyframes collapse {
-  from {
-    max-height: 100px;
-    opacity: 1;
-    transform: scale(1);
-    }
-  to {
-      max-height: 0px;
-      opacity: 0;
-       transform: scale(0);
-    }
+@keyframes opaopa {
+  0% { opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
 }
